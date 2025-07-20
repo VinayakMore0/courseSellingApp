@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require("express");
 const mongoose = require("mongoose");
 
@@ -13,7 +15,7 @@ app.use("/api/v1/admin", adminRouter);
 app.use("/api/v1/course", courseRouter);
 
 async function main() {
-    await mongoose.connect("mongodb+srv://vinayakmore0:v!nayakM20@cluster0.gsimec7.mongodb.net/course-selling-app");
+    await mongoose.connect(process.env.MONGO_URL);
     app.listen(3000);
     console.log("Listening on port http://localhost:3000/");
 }
